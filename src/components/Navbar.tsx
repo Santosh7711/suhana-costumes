@@ -6,6 +6,7 @@ import { useCart } from '@/lib/cart';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { totalItems } = useCart();
 
   const links = [
     { to: '/', label: 'Home' },
