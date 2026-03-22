@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ShoppingBag, User, Search } from 'lucide-react';
+import { useCart } from '@/lib/cart';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { totalItems } = useCart();
 
   const links = [
     { to: '/', label: 'Home' },
@@ -55,9 +57,11 @@ const Navbar = () => {
             </Link>
             <button className="p-2 text-foreground transition-transform active:scale-95 hover:text-accent relative" aria-label="Cart">
               <ShoppingBag size={18} />
-              <span className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-accent text-accent-foreground text-[10px] flex items-center justify-center font-medium">
-                0
-              </span>
+              {totalItems > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-accent text-accent-foreground text-[10px] flex items-center justify-center font-medium">
+                  {totalItems}
+                </span>
+              )}
             </button>
           </div>
         </div>

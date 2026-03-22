@@ -9,7 +9,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
   const hasDiscount = product.originalPrice && product.originalPrice > product.price;
 
   return (
-    <Link to={`/catalog`} className="group block">
+    <Link to={`/product/${product.id}`} className="group block">
       <div className="relative overflow-hidden bg-secondary rounded-sm aspect-[3/4]">
         <img
           src={product.image}
